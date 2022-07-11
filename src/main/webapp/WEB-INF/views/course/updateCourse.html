@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>UpdateCourse</title>
+</head>
+<body>
+<form th:action="@{courses/saveUpdateCourse}"
+      th:object="${course}"
+      method="patch"
+      style="text-align:center; margin-top:200px; font-size: 30px;">
+    <input type="hidden" name = "id" th:field="${course.id}">
+    <input type="text"  name="Group Name" th:field="${course.courseName}" placeholder="Group Name">
+    <input type="text"  name="dateOfStart" th:field="${course.durationMonth}" placeholder="Date Of Start">
+    <br><br>
+    <select th:field="${course.companyId}">
+        <option th:each="company:${companyList}"
+                th:value="${course.getId()}"
+                th:text="${course.getCompanyName()}"></option>
+    </select>
+
+    <input type="submit" value="Add">
+
+</form>
+</body>
+</html>
