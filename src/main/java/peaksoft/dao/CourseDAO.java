@@ -12,7 +12,7 @@ public interface CourseDAO {
 
     Course getCourseById(Long id);
 
-    void updateCourse(Course course);
+    void updateCourse(Course course, Long id);
 
     void deleteCourse(Course course);
 }

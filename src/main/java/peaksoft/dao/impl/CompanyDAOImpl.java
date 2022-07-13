@@ -1,7 +1,8 @@
-package peaksoft.dao;
+package peaksoft.dao.impl;
 
 
 import org.springframework.stereotype.Repository;
+import peaksoft.dao.CompanyDAO;
 import peaksoft.entities.Company;
 
 import javax.persistence.EntityManager;

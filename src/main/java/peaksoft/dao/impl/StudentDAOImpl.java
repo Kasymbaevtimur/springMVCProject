@@ -1,7 +1,9 @@
-package peaksoft.dao;
+package peaksoft.dao.impl;
 
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
+import peaksoft.dao.GroupDAO;
+import peaksoft.dao.StudentDAO;
 import peaksoft.entities.Group;
 import peaksoft.entities.Student;
 
@@ -45,8 +47,12 @@ public class StudentDAOImpl implements StudentDAO {
     }
 
     @Override
-    public void updateStudent(Student student) {
-        entityManager.merge(student);
+    public void updateStudent(Student student, Long id) {
+        Student student1 = getStudentById(id);
+        student1.setFirstName(student.getFirstName());
+        student1.setLastName(student.getLastName());
+        student1.setEmail(student.getEmail());
+        entityManager.merge(student1);
     }
 
     @Override

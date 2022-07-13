@@ -1,8 +1,10 @@
-package peaksoft.dao;
+package peaksoft.dao.impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
+import peaksoft.dao.CourseDAO;
+import peaksoft.dao.TeacherDAO;
 import peaksoft.entities.Course;
 import peaksoft.entities.Teacher;
 
@@ -33,20 +35,25 @@ public class TeacherDAOIml implements TeacherDAO {
         return teacher;
     }
 
-@Override
-public void addTeacher(Teacher teacher, Long courseId) {
-    Course course = courseDAO.getCourseById(courseId);
-    teacher.setCourse(course);
-    entityManager.persist(teacher);
-}
+    @Override
+    public void addTeacher(Teacher teacher, Long courseId) {
+        Course course = courseDAO.getCourseById(courseId);
+        teacher.setCourse(course);
+        entityManager.persist(teacher);
+    }
+
     @Override
     public Teacher getTeacherById(Long id) {
         return entityManager.find(Teacher.class, id);
     }
 
     @Override
-    public void updateTeacher(Teacher teacher) {
-        entityManager.merge(teacher);
+    public void updateTeacher(Teacher teacher, Long id) {
+        Teacher teacher1 = getTeacherById(id);
+        teacher1.setFirstName(teacher.getFirstName());
+        teacher1.setLastName(teacher.getLastName());
+        teacher1.setEmail(teacher.getEmail());
+        entityManager.merge(teacher1);
     }
 
     @Override

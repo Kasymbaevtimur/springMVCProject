@@ -4,15 +4,53 @@
     <meta charset="UTF-8">
     <title>All groups</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+    <meta charset="UTF-8">
 
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <style>
+        body,h1,h2,h3,h4,h5,h6 {font-family: "Lato", sans-serif}
+        .w3-bar,h1,button {font-family: "Montserrat", sans-serif}
+        .fa-anchor,.fa-coffee {font-size:200px}
+    </style>
 </head>
 <style>
-    .classBody{
+    .table-bordered{
 
-        color: darkslategrey;
+        text-transform: uppercase;
+        text-decoration-skip-box:all ;
+
     }
+
+
 </style>
-<body class="classBody">
+
+
+<div class="w3-top">
+    <div class="w3-bar w3-red w3-card w3-left-align w3-large">
+        <a class="w3-bar-item w3-button w3-hide-medium w3-hide-large w3-right w3-padding-large w3-hover-white w3-large w3-red" href="javascript:void(0);" onclick="myFunction()" title="Toggle Navigation Menu"><i class="fa fa-bars"></i></a>
+        <a href="" class="w3-bar-item w3-button w3-padding-large w3-white">Home</a>
+        <a th:href="@{/companies}" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-yellow">Company</a>
+        <a th:href="@{/courses}" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-green">Course</a>
+        <a th:href="@{/groups}" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-blue">Group</a>
+        <a th:href="@{/teachers}" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-grey">Teacher</a>
+        <a th:href="@{/students}" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white">Student</a>
+    </div>
+</div>
+<header class="w3-container w3-red w3-center" style="padding:128px 16px">
+    <h1 class="w3-margin w3-jumbo">TEACHER</h1>
+    <p class="w3-xlarge">Moscow</p>
+    <input style=" display: block; margin:auto; font-size:30px;" type="button" value="Add Teacher"
+           onclick="window.location.href = 'teachers/addTeacher'">
+    <br>
+
+</header>
 <table class="table table-bordered">
     <thead>
     <tr>
@@ -20,39 +58,41 @@
         <th scope="col">Firs Name</th>
         <th scope="col">Email</th>
         <th scope="col">Last Name</th>
-        <th scope="col">Update</th>
         <th scope="col">Course</th>
+        <th scope="col">Update</th>
+        <th scope="col">Delete</th>
     </tr>
     </thead>
     <tbody>
     <tr th:each="teacher:${teachers}">
-
         <th scope="row" th:text="${teacher.id}"></th>
         <td th:text="${teacher.firstName}"></td>
         <td th:text="${teacher.email}"></td>
         <td th:text="${teacher.lastName}"></td>
+        <td th:text="${teacher.getCourse().getCourseName()}"></td>
+<!--        <td th:text="${teacher.getCourse().getCourseName()}"></td>-->
 
-        <td><a th:href="@{/students}">
-            <button style="height: 40px; width: 80px; background-color:green;">teacher</button>
-        </a><td>
-
-        <td><a th:href="@{/teachers/updateTeacher}">
+        <td><a th:href="@{/teachers/{id}/updateTeacher(id=${teacher.id})}">
             <button style="height: 40px; width: 80px; background-color:grey;">update</button>
         </a></td>
 
-        <td><a th:href="@{/teacher/deleteTeacher}"
-               onclick="return confirm('Are you sure you want to delete this group?');">
-            <button style="height: 40px; width: 80px; background-color:red;">delete</button>
-        </a></td>
+        <td><form th:method="DELETE" th:action="@{/teachers(id=${teacher.id})}">
+            <input type="submit" value="delete" style="height: 40px; width: 80px; background-color:red;"/></form></td>
+
+<!--        <td><form><a th:method="delete" th:href="@{/teacher/{id}(id=${teacher.id})}"-->
+<!--               onclick="return confirm('Are you sure you want to delete this group?');">-->
+<!--            <button TYPE="submit" VALUE="DELETE" style="height: 40px; width: 80px; background-color:red;">delete</button>-->
+<!--        </a></form></td>-->
 
     </tr>
     </tbody>
 </table>
-<input style=" display: block; margin:auto; font-size:30px;" type="button" value="Add Teacher"
-       onclick="window.location.href = 'teachers/addTeacher'">
-<br><br>
-<input style=" display: block; margin:auto; font-size:30px;" type="button" value="Back to Course"
-       onclick="window.location.href = 'course'">
+
 </table>
+<br>
+<input style=" display: block; margin:auto; font-size:30px;" type="button" value="<<back to Course"
+       onclick="window.location.href = '/courses'">
+<br>
+
 </body>
 </html>

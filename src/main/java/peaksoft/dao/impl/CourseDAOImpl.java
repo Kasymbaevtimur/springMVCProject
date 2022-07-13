@@ -1,9 +1,11 @@
-package peaksoft.dao;
+package peaksoft.dao.impl;
 
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
+import peaksoft.dao.CompanyDAO;
+import peaksoft.dao.CourseDAO;
 import peaksoft.entities.Company;
 import peaksoft.entities.Course;
 
@@ -48,9 +50,11 @@ public class CourseDAOImpl implements CourseDAO {
     }
 
     @Override
-    public void updateCourse(Course course) {
-//        Course course1=getCourseById(id);
-        entityManager.merge(course);
+    public void updateCourse(Course course, Long id) {
+        Course course1 = getCourseById(id);
+        course1.setCourseName(course.getCourseName());
+        course1.setDurationMonth(course.getDurationMonth());
+        entityManager.merge(course1);
     }
 
     @Override

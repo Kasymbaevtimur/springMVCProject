@@ -8,7 +8,7 @@ import lombok.NoArgsConstructor;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "tachers")
+@Table(name = "teachers")
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
@@ -23,7 +23,7 @@ public class Teacher {
     @Column(name = "last_name")
     private String lastName;
 
-    @OneToOne(cascade = {CascadeType.REFRESH, CascadeType.MERGE}, mappedBy = "teacher")
+    @OneToOne(cascade = {CascadeType.REFRESH, CascadeType.MERGE})
     private Course course;
     @Transient
     private Long courseId;

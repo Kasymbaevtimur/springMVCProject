@@ -1,13 +1,15 @@
-package peaksoft.dao;
+package peaksoft.dao.impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
-import peaksoft.entities.Course;
+import peaksoft.dao.CourseDAO;
+import peaksoft.dao.GroupDAO;
 import peaksoft.entities.Group;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.TypedQuery;
 import java.util.Comparator;
 import java.util.List;
 
@@ -34,10 +36,9 @@ public class GroupDAOImpl implements GroupDAO {
     }
 
     @Override
-    public void addGroup(Group group,Long courseId) {
-        List<Course>course = (List<Course>) courseDAO.getCourseById(courseId);
-        group.setCourses(course);
+    public void addGroup(Group group) {
         entityManager.persist(group);
+
     }
 
     @Override
@@ -47,15 +48,21 @@ public class GroupDAOImpl implements GroupDAO {
     }
 
     @Override
+    public TypedQuery<Group> getByStudentName(String studentName) {
+        TypedQuery<Group> query = entityManager.createQuery("SELECT  FROM Group where studentname = :studentname", Group.class);
+        return query.setParameter("studentname", studentName);
+
+    }
+
+    @Override
     public void updateGroup(Group group, Long id) {
         Group group1 = getGroupById(id);
+        group1.setGroupName(group.getGroupName());
+        group1.setDateOfStart(group.getDateOfStart());
+        group1.setDateOfFinish(group.getDateOfFinish());
         entityManager.merge(group1);
     }
-//    @Override
-//    public void updateGroup(Group group) {
-//        entityManager.merge(group);
-//
-//    }
+
 
     @Override
     public void deleteGroup(Group group) {

@@ -8,9 +8,11 @@ public interface GroupService {
 
     List<Group> getAllGroups();
 
-    void addGroup(Group group,Long courseId);
+    void addGroup(Group group, Long courseId);
 
     Group getGroupById(Long id);
+
+    Group getByStudentName(String studentName);
 
     void updateGroup(Group group, Long id);
 

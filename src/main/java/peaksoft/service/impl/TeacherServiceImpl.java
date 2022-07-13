@@ -24,8 +24,8 @@ public class TeacherServiceImpl implements TeacherService {
     }
 
     @Override
-    public void addTeacher(Teacher teacher,Long courseId) {
-        teacherDAO.addTeacher(teacher,courseId);
+    public void addTeacher(Teacher teacher, Long courseId) {
+        teacherDAO.addTeacher(teacher, courseId);
 
     }
 
@@ -35,8 +35,8 @@ public class TeacherServiceImpl implements TeacherService {
     }
 
     @Override
-    public void updateTeacher(Teacher teacher) {
-        teacherDAO.updateTeacher(teacher);
+    public void updateTeacher(Teacher teacher, Long id) {
+        teacherDAO.updateTeacher(teacher, id);
     }
 
     @Override

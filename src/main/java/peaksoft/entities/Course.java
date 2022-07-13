@@ -29,7 +29,7 @@ public class Course {
     @Column(name = "duration_month")
     private String durationMonth;
 
-    @ManyToOne(cascade = {CascadeType.REMOVE, CascadeType.REFRESH})
+    @ManyToOne(cascade = {CascadeType.REFRESH})
     @JoinColumn(name = "companies_id")
     private Company company;
 
@@ -39,7 +39,7 @@ public class Course {
             inverseJoinColumns = @JoinColumn(name = "groups_id"))
     private List<Group> groups;
 
-    @OneToOne(fetch = FetchType.EAGER, cascade = {CascadeType.REFRESH, CascadeType.MERGE})
+    @OneToOne(fetch = FetchType.EAGER, cascade = {CascadeType.REFRESH, CascadeType.MERGE}, mappedBy = "course")
     private Teacher teacher;
 
     @Transient

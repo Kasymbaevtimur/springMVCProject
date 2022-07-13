@@ -24,8 +24,8 @@ public class StudentServiceImpl implements StudentService {
     }
 
     @Override
-    public void addStudent(Student student,Long groupId) {
-        studentDAO.addStudent(student,groupId);
+    public void addStudent(Student student, Long groupId) {
+        studentDAO.addStudent(student, groupId);
 
     }
 
@@ -35,8 +35,8 @@ public class StudentServiceImpl implements StudentService {
     }
 
     @Override
-    public void updateStudent(Student student) {
-        studentDAO.updateStudent(student);
+    public void updateStudent(Student student, Long id) {
+        studentDAO.updateStudent(student, id);
     }
 
     @Override

@@ -45,31 +45,25 @@ public class TeacherController {
 
     @PostMapping("/saveTeacher")
     public String saveTeacher(@ModelAttribute("teacher") Teacher teacher) {
-        teacherService.addTeacher(teacher,teacher.getCourseId());
+        teacherService.addTeacher(teacher, teacher.getCourseId());
         return "redirect:/teachers";
     }
 
-    @GetMapping("/updateTeacher")
-    public String updateCourse(@RequestParam("courseId") Long id, Model model) {
-       Teacher teacher= teacherService.getTeacherById(id);
-        model.addAttribute("teacher", teacher);
+    @GetMapping("/{id}/updateTeacher")
+    public String updateCourse(@PathVariable("id") Long id, Model model) {
+        Teacher teacher = teacherService.getTeacherById(id);
+        model.addAttribute("teacherUpdate", teacher);
         return "teacher/updateTeacher";
     }
-    @PostMapping("/saveUpdateTeacher")
-    public String saveUpdateCourse(@ModelAttribute("teacher") Teacher teacher) {
-        teacherService.updateTeacher(teacher);
+
+    @PatchMapping("/{id}")
+    public String saveUpdateCourse(@PathVariable("id") Long id, @ModelAttribute("teacherUpdate") Teacher teacher) {
+        teacherService.updateTeacher(teacher, id);
         return "redirect:/teachers";
     }
-//
-//    @PostMapping("/saveUpdateCourse")
-//    public String saveUpdateCourse(@RequestParam("companyId") Long id, @ModelAttribute("course") Course course) {
-//        course.setCompany(companyService.getCompanyById(id));
-//        coursesService.updateCourse(course);
-//        return "redirect:/courses";
-//    }
 
-    @RequestMapping("/deleteTeacher")
-    public String deleteTeacher(@RequestParam("teacherId") Long id, @RequestParam("courseId") Long id2) {
+    @DeleteMapping()
+    public String deleteTeacher(@RequestParam("id") Long id) {
         teacherService.deleteTeacher(teacherService.getTeacherById(id));
         return "redirect:/teachers";
     }
