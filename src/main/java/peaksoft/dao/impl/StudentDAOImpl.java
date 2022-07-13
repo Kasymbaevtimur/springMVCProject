@@ -60,4 +60,10 @@ public class StudentDAOImpl implements StudentDAO {
         entityManager.remove(entityManager.contains(student) ? student : entityManager.merge(student));
 
     }
+
+    @Override
+    public List<Student> getByName(String name) {
+        List<Student>students=entityManager.createQuery("select s from Student  s where s.firstName=?1",Student.class).setParameter(1,name).getResultList();
+        return students;
+    }
 }

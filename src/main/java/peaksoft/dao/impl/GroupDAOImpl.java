@@ -47,12 +47,7 @@ public class GroupDAOImpl implements GroupDAO {
 
     }
 
-    @Override
-    public TypedQuery<Group> getByStudentName(String studentName) {
-        TypedQuery<Group> query = entityManager.createQuery("SELECT  FROM Group where studentname = :studentname", Group.class);
-        return query.setParameter("studentname", studentName);
 
-    }
 
     @Override
     public void updateGroup(Group group, Long id) {

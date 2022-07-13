@@ -35,22 +35,16 @@ public class GroupsController {
         return courseService.getAllCourses();
     }
 
-    //    @RequestMapping("/search")
-//    public String search(@RequestParam String keyword) {
-//       Group group=groupService.getByStudentName(keyword);
-//           return "redirect:students";
-//       }
-    @GetMapping("/search")
-    public String search(@PathVariable("name") String name, Model model) {
-        List<Student> students = (List<Student>) groupService.getByStudentName(name);
-        if (name != null) {
-            model.addAttribute("search", students);
-        } else {
-            model.addAttribute(groupService.getAllGroups());
-        }
-        return "getStudent";
+//    @GetMapping("/search")
+//    public String search(@PathVariable("name") String name, Model model) {
+//        List<Student> students = (List<Student>) groupService.getByStudentName(name);
+//        if (name != null) {
+//            model.addAttribute("list", students);
+//        } else {
+//            model.addAttribute("list",studentService.getAllStudents());
+//        }
+//        return "getStudent";
 
-    }
 
 
     @GetMapping()
@@ -92,5 +86,15 @@ public class GroupsController {
         groupService.deleteGroup(groupService.getGroupById(id));
         return "redirect:/groups";
 
+    }
+    @GetMapping("/search")
+    public String search(Model model, String name){
+        if (name!=null){
+            model.addAttribute("list",studentService.getByName(name));
+        }
+        else {
+            model.addAttribute("list",studentService.getAllStudents());
+        }
+        return "/student/getStudent";
     }
 }

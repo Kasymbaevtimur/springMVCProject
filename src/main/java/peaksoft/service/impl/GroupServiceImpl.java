@@ -44,10 +44,6 @@ public class GroupServiceImpl implements GroupService {
         return groupDAO.getGroupById(id);
     }
 
-    public Group getByStudentName(String studentName) {
-        return (Group) groupDAO.getByStudentName(studentName);
-    }
-
     @Override
     public void updateGroup(Group group, Long id) {
         groupDAO.updateGroup(group, id);

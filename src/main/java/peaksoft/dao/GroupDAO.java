@@ -13,7 +13,6 @@ public interface GroupDAO {
 
     Group getGroupById(Long id);
 
-    TypedQuery<Group> getByStudentName(String studentName);
 
     void updateGroup(Group group, Long id);
 

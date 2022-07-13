@@ -15,4 +15,5 @@ public interface StudentDAO {
     void updateStudent(Student student, Long id);
 
     void deleteStudent(Student student);
+    List<Student>getByName(String name);
 }

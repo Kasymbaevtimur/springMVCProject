@@ -12,7 +12,6 @@ public interface GroupService {
 
     Group getGroupById(Long id);
 
-    Group getByStudentName(String studentName);
 
     void updateGroup(Group group, Long id);
 
