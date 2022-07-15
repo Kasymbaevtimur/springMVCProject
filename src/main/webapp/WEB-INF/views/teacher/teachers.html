@@ -122,7 +122,6 @@
         <td th:text="${teacher.email}"></td>
         <td th:text="${teacher.lastName}"></td>
         <td th:text="${teacher.getCourse().getCourseName()}"></td>
-<!--        <td th:text="${teacher.getCourse().getCourseName()}"></td>-->
 
         <td><a th:href="@{/teachers/{id}/updateTeacher(id=${teacher.id})}">
             <button style="height: 40px; width: 80px; background-color:grey;">update</button>
