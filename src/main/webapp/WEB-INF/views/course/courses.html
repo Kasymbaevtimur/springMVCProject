@@ -118,7 +118,7 @@
         <td th:text="${course.getCompany().getCompanyName()}"></td>
 
         <td><a th:href="@{/courses/group/{courseId}(courseId=${course.getId()})}">
-            <button style="height: 40px; width: 80px; background-color:grey;">Group</button></a></td>
+            <button style="height: 40px; width: 80px; background-color:green;">Group</button></a></td>
 
         <td><a th:href="@{/courses/{id}/updateCourse(id=${course.id})}">
             <button style="height: 40px; width: 80px; background-color:grey;">update</button>

@@ -117,7 +117,7 @@
 
             </td>
             <td><a th:href="@{/companies/updateCompany(companyId=${company.id})}">
-                <button style="height: 40px; width: 80px; background-color:blue;">update</button>
+                <button style="height: 40px; width: 80px; background-color:grey;">update</button>
             </a>
             </td>
             <td><a th:href="@{/companies/deleteCompany/(companyId=${company.id})}"
@@ -126,7 +126,7 @@
             </a></td>
 
             <td><a th:href="@{/companies/students/{companyId}(companyId=${company.getId()})}">
-                <button style="height: 40px; width: 80px; background-color:grey;">Student</button></a></td>
+                <button style="height: 40px; width: 80px; background-color:green;">Student</button></a></td>
         </tr>
         </tbody>
 
@@ -136,7 +136,7 @@
 
 </table>
 <br>
-<input style=" display: block; margin:auto; font-size:30px;" type="button" value="<<back to Main"
+<input style=" display: block; margin:auto; font-size:30px;" type="button" th:background="green" value="<<back to Main"
        onclick="window.location.href = ''">
 <br>
 
