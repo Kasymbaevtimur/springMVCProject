@@ -81,7 +81,8 @@
 <header class="w3-container w3-blue w3-center" style="padding:70px 15px">
     <p class="w3-xlarge w3-red" >Students in this Company</p>
     <br>
-    <div th:text="${size}"></div>
+    <div>Size:</div>
+    <h1><div class="w3-bar w3-red " th:name="size" th:text="${size}"></div></h1>
 <br>
 </header>
 <table  WIDTH="100%" align="center" class="table_blur  w3-white">
