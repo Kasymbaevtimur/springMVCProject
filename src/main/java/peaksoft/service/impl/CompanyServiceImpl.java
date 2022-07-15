@@ -42,4 +42,8 @@ public class CompanyServiceImpl implements CompanyService {
     public void deleteCompany(Company company) {
         companyDAO.deleteCompany(company);
     }
+
+
+
+
 }

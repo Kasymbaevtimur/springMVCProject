@@ -22,6 +22,12 @@ public class GroupServiceImpl implements GroupService {
         this.courseDAO = courseDAO;
     }
 
+
+    @Override
+    public List<Course> getCoursesByGroup(Long groupid) {
+        return groupDAO.getCoursesByGroup(groupid);
+    }
+
     @Override
     public List<Group> getAllGroups() {
         return groupDAO.getAllGroup();

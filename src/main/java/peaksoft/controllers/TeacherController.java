@@ -5,8 +5,10 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import peaksoft.entities.Course;
+import peaksoft.entities.Student;
 import peaksoft.entities.Teacher;
 import peaksoft.service.CourseService;
+import peaksoft.service.StudentService;
 import peaksoft.service.TeacherService;
 
 import java.util.List;
@@ -18,11 +20,13 @@ public class TeacherController {
     private final TeacherService teacherService;
 
     private final CourseService courseService;
+    private final StudentService studentService;
 
     @Autowired
-    public TeacherController(TeacherService teacherService, CourseService courseService) {
+    public TeacherController(TeacherService teacherService, CourseService courseService, StudentService studentService) {
         this.teacherService = teacherService;
         this.courseService = courseService;
+        this.studentService = studentService;
     }
 
     @ModelAttribute("courseList")
@@ -67,5 +71,14 @@ public class TeacherController {
         teacherService.deleteTeacher(teacherService.getTeacherById(id));
         return "redirect:/teachers";
     }
-}
 
+    @GetMapping("/students/{teacherId}")
+    public String getStudentsByTeacher(Model model, @PathVariable("teacherId") Long teacherId) {
+        List<Student> students = studentService.getStudentsByTeacher(teacherId);
+        model.addAttribute("size", students.size());
+        model.addAttribute("students", students);
+        return "teacher/getStudents";
+
+    }
+
+}

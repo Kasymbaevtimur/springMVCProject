@@ -17,6 +17,8 @@ public interface StudentService {
 
     void deleteStudent(Student student);
     List<Student>getByName(String name);
+    List<Student>getStudentsByCompany(Long companyId);
+    List<Student>getStudentsByTeacher(Long teacherId);
 
 
 }

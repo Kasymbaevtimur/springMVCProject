@@ -66,4 +66,17 @@ public class StudentDAOImpl implements StudentDAO {
         List<Student>students=entityManager.createQuery("select s from Student  s where s.firstName=?1",Student.class).setParameter(1,name).getResultList();
         return students;
     }
+
+    @Override
+    public List<Student> getStudentsByCompany(Long companyId) {
+        List<Student>students=entityManager.createQuery("select s from Student s join Group g on s.group.id=g.id join  g.courses c  join Company com on com.id=c.company.id where com.id=?1",Student.class)
+                .setParameter(1,companyId).getResultList();
+        return students;
+    }
+  public List<Student> getStudentsByTeacher(Long teacherId) {
+        List<Student>students=entityManager.createQuery("select s from Student s join Group g on s.group.id=g.id join  g.courses c  join Teacher t on t.id=c.teacher.id where t.id=?1",Student.class)
+                .setParameter(1,teacherId).getResultList();
+        return students;
+    }
+
 }

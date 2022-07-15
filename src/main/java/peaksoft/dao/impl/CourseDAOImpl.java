@@ -8,6 +8,7 @@ import peaksoft.dao.CompanyDAO;
 import peaksoft.dao.CourseDAO;
 import peaksoft.entities.Company;
 import peaksoft.entities.Course;
+import peaksoft.entities.Group;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -26,6 +27,13 @@ public class CourseDAOImpl implements CourseDAO {
     @Autowired
     public CourseDAOImpl(CompanyDAO companyDAO) {
         this.companyDAO = companyDAO;
+    }
+
+    @Override
+    public List<Group> getGroupsByCourse(Long courseId) {
+        List<Group>groups=entityManager.createQuery("select c from  Group c join c.courses g where g.id=?1",Group.class)
+                .setParameter(1,courseId).getResultList();
+        return groups;
     }
 
 

@@ -23,18 +23,6 @@ public class Group {
     @Column(name = "date_of_finish")
     private String dateOfFinish;
 
-//    @ManyToMany(fetch = FetchType.LAZY, cascade = {CascadeType.PERSIST,CascadeType.MERGE})
-//    @JoinTable(name="group_course",
-//               joinColumns = @JoinColumn(name="group_id"),
-//                inverseJoinColumns = @JoinColumn(name="course_id"))
-//    private  List<Course> courses;
-//
-//
-//    @OneToMany(fetch = FetchType.EAGER,cascade ={CascadeType.MERGE,CascadeType.REMOVE},mappedBy = "course")
-//
-//    private List<Student>students;
-//
-
     @ManyToMany(fetch = FetchType.EAGER, cascade = {CascadeType.REFRESH, CascadeType.MERGE})
     @JoinTable(name = "course_group",
             joinColumns = @JoinColumn(name = "groups_id"),

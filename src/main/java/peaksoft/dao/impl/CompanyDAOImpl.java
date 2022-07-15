@@ -46,4 +46,5 @@ public class CompanyDAOImpl implements CompanyDAO {
         entityManager.remove(entityManager.contains(company) ? company : entityManager.merge(company));
     }
 
+
 }

@@ -21,10 +21,61 @@
     </style>
 </head>
 <style>
-    .table-bordered{
 
-        text-transform: uppercase;
-        text-decoration-skip-box:all ;
+    .table_blur {
+        background: #f5ffff;
+        border-collapse: collapse;
+        text-align: center;
+
+
+    }
+    .table_blur th {
+        border-top: 1px solid #777777;
+        border-bottom: 1px solid #777777;
+        box-shadow: inset 0 1px 0 #999999, inset 0 -1px 0 #999999;
+        background: linear-gradient(#9595b6, #5a567f);
+        color: white;
+        padding: 10px 15px;
+        position: relative;
+    }
+    .table_blur th:after {
+        content: "";
+        display: block;
+        position: absolute;
+        left: 0;
+        top: 25%;
+        height: 25%;
+        width: 100%;
+        background: linear-gradient(rgba(255, 255, 255, 0), rgba(255,255,255,.08));
+    }
+    .table_blur tr:nth-child(odd) {
+        background: #ebf3f9;
+    }
+    .table_blur th:first-child {
+        border-left: 1px solid #777777;
+        border-bottom:  1px solid #777777;
+        box-shadow: inset 1px 1px 0 #999999, inset 0 -1px 0 #999999;
+    }
+    .table_blur th:last-child {
+        border-right: 1px solid #777777;
+        border-bottom:  1px solid #777777;
+        box-shadow: inset -1px 1px 0 #999999, inset 0 -1px 0 #999999;
+    }
+    .table_blur td {
+        border: 1px solid #e3eef7;
+        padding: 10px 15px;
+        position: relative;
+        transition: all 0.5s ease;
+    }
+    .table_blur tbody:hover td {
+        color: transparent;
+        text-shadow: 0 0 3px #a09f9d;
+
+    }
+    .table_blur tbody:hover tr:hover td {
+        color: #444444;
+        text-shadow: none;
+
 
     }
 
@@ -35,15 +86,15 @@
 <div class="w3-top">
     <div class="w3-bar w3-red w3-card w3-left-align w3-large">
         <a class="w3-bar-item w3-button w3-hide-medium w3-hide-large w3-right w3-padding-large w3-hover-white w3-large w3-red" href="javascript:void(0);" onclick="myFunction()" title="Toggle Navigation Menu"><i class="fa fa-bars"></i></a>
-        <a href="" class="w3-bar-item w3-button w3-padding-large w3-white">Home</a>
-        <a th:href="@{/companies}" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-yellow">Company</a>
-        <a th:href="@{/courses}" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-green">Course</a>
-        <a th:href="@{/groups}" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-blue">Group</a>
-        <a th:href="@{/teachers}" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-grey">Teacher</a>
-        <a th:href="@{/students}" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white">Student</a>
+        <a href="" class="w3-bar-item w3-button w3-padding-large w3-cyan w3-white">Home</a>
+        <a th:href="@{/companies}" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-cyan w3-hover-white">Company</a>
+        <a th:href="@{/courses}" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-cyan w3-hover-white">Course</a>
+        <a th:href="@{/groups}" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-cyan w3-hover-white">Group</a>
+        <a th:href="@{/teachers}" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-red w3-hover-white">Teacher</a>
+        <a th:href="@{/students}" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-cyan w3-hover-white">Student</a>
     </div>
 </div>
-<header class="w3-container w3-red w3-center" style="padding:128px 16px">
+<header class="w3-container w3-red w3-center" style="padding:70px 15px">
     <h1 class="w3-margin w3-jumbo">TEACHER</h1>
     <p class="w3-xlarge">Moscow</p>
     <input style=" display: block; margin:auto; font-size:30px;" type="button" value="Add Teacher"
@@ -51,7 +102,7 @@
     <br>
 
 </header>
-<table class="table table-bordered">
+<table WIDTH="100%" align="center" class="table_blur  w3-white">
     <thead>
     <tr>
         <th scope="col">#</th>
@@ -61,6 +112,7 @@
         <th scope="col">Course</th>
         <th scope="col">Update</th>
         <th scope="col">Delete</th>
+        <th scope="col">Students</th>
     </tr>
     </thead>
     <tbody>
@@ -79,10 +131,9 @@
         <td><form th:method="DELETE" th:action="@{/teachers(id=${teacher.id})}">
             <input type="submit" value="delete" style="height: 40px; width: 80px; background-color:red;"/></form></td>
 
-<!--        <td><form><a th:method="delete" th:href="@{/teacher/{id}(id=${teacher.id})}"-->
-<!--               onclick="return confirm('Are you sure you want to delete this group?');">-->
-<!--            <button TYPE="submit" VALUE="DELETE" style="height: 40px; width: 80px; background-color:red;">delete</button>-->
-<!--        </a></form></td>-->
+        <td><a th:href="@{/teachers/students/{teacherId}(teacherId=${teacher.getId()})}">
+            <button style="height: 40px; width: 80px; background-color:grey;">Students</button></a></td>
+
 
     </tr>
     </tbody>

@@ -1,10 +1,13 @@
 package peaksoft.dao;
 
 import peaksoft.entities.Course;
+import peaksoft.entities.Group;
 
 import java.util.List;
 
 public interface CourseDAO {
+
+    List<Group> getGroupsByCourse(Long courseId);
 
     List<Course> getAllCourses();
 

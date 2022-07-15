@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import peaksoft.dao.CourseDAO;
 import peaksoft.entities.Course;
+import peaksoft.entities.Group;
 import peaksoft.service.CourseService;
 
 import java.util.List;
@@ -16,6 +17,12 @@ public class CourseServiceImpl implements CourseService {
     @Autowired
     public CourseServiceImpl(CourseDAO courseDAO) {
         this.courseDAO = courseDAO;
+    }
+
+
+    @Override
+    public List<Group> getGroupByCourse(Long courseId) {
+        return courseDAO.getGroupsByCourse(courseId);
     }
 
     @Override

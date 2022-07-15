@@ -5,11 +5,11 @@ import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 import peaksoft.dao.CourseDAO;
 import peaksoft.dao.GroupDAO;
+import peaksoft.entities.Course;
 import peaksoft.entities.Group;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
-import javax.persistence.TypedQuery;
 import java.util.Comparator;
 import java.util.List;
 
@@ -27,6 +27,13 @@ public class GroupDAOImpl implements GroupDAO {
         this.courseDAO = courseDAO;
     }
 
+
+    @Override
+    public List<Course> getCoursesByGroup(Long groupId) {
+        List<Course>courses=entityManager.createQuery("select c from  Course c join c.groups g where g.id=?1",Course.class)
+                .setParameter(1,groupId).getResultList();
+        return courses;
+    }
     @Override
     public List<Group> getAllGroup() {
         List<Group> groups = entityManager.createQuery("from Group", Group.class).getResultList();

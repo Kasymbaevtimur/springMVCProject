@@ -68,8 +68,7 @@
         <th scope="col">Email</th>
         <th scope="col">Study Format</th>
         <th scope="col">Group</th>
-        <th scope="col">Update</th>
-        <th scope="col">Delete</th>
+
     </tr>
     </thead>
     <tbody>
@@ -81,12 +80,6 @@
         <td th:text="${student.studyFormat}"></td>
         <td th:text="${student.getGroup().getGroupName()}"></td>
 
-        <td><a th:method="delete" th:href="@{/students/{id}/updateStudent(id=${student.id})}">
-            <button style="height: 40px; width: 80px; background-color:grey;">update</button>
-        </a></td>
-
-        <td><form th:method="DELETE" th:action="@{/students(id=${student.getId()})}">
-            <input type="submit" value="delete" style="height: 40px; width: 80px; background-color:red;"/></form></td>
 
 
     </tr>

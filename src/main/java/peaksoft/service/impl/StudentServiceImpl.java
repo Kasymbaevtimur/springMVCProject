@@ -49,4 +49,11 @@ public class StudentServiceImpl implements StudentService {
     public List<Student> getByName(String name) {
         return studentDAO.getByName(name);
     }
+
+   public List<Student>getStudentsByCompany(Long companyId){
+        return studentDAO.getStudentsByCompany(companyId);
+    }
+    public List<Student>getStudentsByTeacher(Long teacherId){
+        return studentDAO.getStudentsByTeacher(teacherId);
+    }
 }

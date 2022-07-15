@@ -1,8 +1,8 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>All groups</title>
+    <title>Title</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
     <meta charset="UTF-8">
 
@@ -73,42 +73,23 @@
             text-shadow: none;
 
         }
+
     </style>
+
+</head>
 </head>
 <body>
-
-<div class="w3-top">
-    <div class="w3-bar w3-red w3-card w3-left-align w3-large">
-        <a class="w3-bar-item w3-button w3-hide-medium w3-hide-large w3-right w3-padding-large w3-hover-white w3-large w3-red" href="javascript:void(0);" onclick="myFunction()" title="Toggle Navigation Menu"><i class="fa fa-bars"></i></a>
-        <a href="" class="w3-bar-item w3-button w3-padding-large w3-cyan w3-white">Home</a>
-        <a th:href="@{/companies}" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-cyan w3-hover-white">Company</a>
-        <a th:href="@{/courses}" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-cyan w3-hover-white">Course</a>
-        <a th:href="@{/groups}" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-red w3-hover-white">Group</a>
-        <a th:href="@{/teachers}" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-cyan w3-hover-white">Teacher</a>
-        <a th:href="@{/students}" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-cyan w3-hover-white">Student</a>
-    </div>
-</div>
-<header class="w3-container w3-red w3-center" style="padding:70px 15px">
-    <h1 class="w3-margin w3-jumbo">GROUP</h1>
+<header class="w3-container w3-red w3-center" style="padding:130px 36px">
+    <h1 class="w3-margin w3-jumbo">COURSE</h1>
     <p class="w3-xlarge">Moscow</p>
-    <input style=" display: block; margin:auto; font-size:30px;" type="button" value="Add Group"
-           onclick="window.location.href = 'groups/addGroup'">
-    <br>
-
-    <input style=" display: block; margin:auto; font-size:30px;" type="button" value="Search"
-           onclick="window.location.href = 'groups/search'">
 </header>
-<table WIDTH="100%" align="center" class="table_blur  w3-white">
+<table   WIDTH="100%" align="center" class="table_blur  w3-white ">
     <thead>
     <tr>
         <th scope="col">#</th>
         <th scope="col">Name</th>
-        <th scope="col">Date of Start</th>
-        <th scope="col">Date of Finish</th>
-        <th scope="col">Course</th>
-        <th scope="col">Update</th>
-        <th scope="col">Delete</th>
-
+        <th scope="col">Duration Of Month</th>
+        <th scope="col">Company</th>
     </tr>
     </thead>
     <tbody>
@@ -117,27 +98,16 @@
         <td th:text="${group.groupName}"></td>
         <td th:text="${group.dateOfStart}"></td>
         <td th:text="${group.dateOfFinish}"></td>
-<
-        <td><a th:href="@{/groups/course/{groupid}/(groupid=${group.getId()})}">
-            <button style="height: 40px; width: 80px; background-color:grey;">Course</button>
-
-        </a></td><td><a th:href="@{/groups/{id}/updateGroup(id=${group.id})}">
-            <button style="height: 40px; width: 80px; background-color:grey;">update</button>
-        </a></td>
-        <td><form th:method="DELETE" th:action="@{/groups(id=${group.getId()})}">
-            <input type="submit" value="delete" style="height: 40px; width: 80px; background-color:red;"/></form></td>
-
     </tr>
+
     </tbody>
 
-
 </table>
 
-</table>
-<br>
-<input style=" display: block; margin:auto; font-size:30px;" type="button" value="<<back to Course"
-       onclick="window.location.href = '/courses'">
-<br>
 
+</table>
+<input style=" display: block; margin:auto; font-size:30px;" type="button" value="<<Back to Groups"
+       onclick="window.location.href = '/groups'">
+<br>
 </body>
 </html>

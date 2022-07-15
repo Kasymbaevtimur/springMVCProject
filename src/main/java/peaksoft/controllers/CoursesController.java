@@ -7,8 +7,10 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import peaksoft.entities.Company;
 import peaksoft.entities.Course;
+import peaksoft.entities.Group;
 import peaksoft.service.CompanyService;
 import peaksoft.service.CourseService;
+import peaksoft.service.GroupService;
 
 import java.util.List;
 
@@ -17,11 +19,13 @@ import java.util.List;
 public class CoursesController {
 
     private final CourseService coursesService;
+    private final GroupService groupService;
     private final CompanyService companyService;
 
     @Autowired
-    public CoursesController(CourseService coursesService, CompanyService companyService) {
+    public CoursesController(CourseService coursesService, GroupService groupService, CompanyService companyService) {
         this.coursesService = coursesService;
+        this.groupService = groupService;
         this.companyService = companyService;
     }
 
@@ -67,5 +71,12 @@ public class CoursesController {
     public String deleteCourse(@PathVariable("id") Long id) {
         coursesService.deleteCourse(coursesService.getCourseById(id));
         return "redirect:/courses";
+    }
+
+    @GetMapping("/group/{courseId}")
+    public String getGroupByCourseId(@PathVariable("courseId") Long courseId, Model model) {
+        List<Group> groups =coursesService.getGroupByCourse(courseId);
+        model.addAttribute("groups", groups);
+        return "course/group";
     }
 }

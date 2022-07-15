@@ -16,7 +16,6 @@
         .w3-bar,h1,button {font-family: "Montserrat", sans-serif}
         .fa-anchor,.fa-coffee {font-size:200px}
     </style>
-
     <style>
 
         .table_blur {
@@ -76,70 +75,41 @@
         }
 
     </style>
+
 </head>
 </head>
 <body>
-
-<div class="w3-top">
-    <div class="w3-bar w3-red w3-card w3-left-align w3-large">
-        <a class="w3-bar-item w3-button w3-hide-medium w3-hide-large w3-right w3-padding-large w3-hover-white w3-large w3-red" href="javascript:void(0);" onclick="myFunction()" title="Toggle Navigation Menu"><i class="fa fa-bars"></i></a>
-        <a href="" class="w3-bar-item w3-button w3-padding-large w3-white">Home</a>
-        <a th:href="@{/companies}" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-cyan  w3-hover-white">Company</a>
-        <a th:href="@{/courses}" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-red w3-hover-white">Course</a>
-        <a th:href="@{/groups}" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-cyan w3-hover-white">Group</a>
-        <a th:href="@{/teachers}" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-cyan w3-hover-white">Teacher</a>
-        <a th:href="@{/students}" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-cyan w3-hover-white">Student</a>
-    </div>
-    </div>
-<header class="w3-container w3-red w3-center" style="padding:70px 15px">
+<header class="w3-container w3-red w3-center" style="padding:130px 36px">
     <h1 class="w3-margin w3-jumbo">COURSE</h1>
     <p class="w3-xlarge">Moscow</p>
-    <input style=" display: block; margin:auto; font-size:30px;" type="button" value="Add Course"
-           onclick="window.location.href = 'courses/addCourse'">
-    <br>
+
+
 </header>
-<table  WIDTH="100%" align="center" class="table_blur  w3-white" >
-    <thead>
-    <tr>
-        <th scope="col">#</th>
-        <th scope="col">Name</th>
-        <th scope="col">Duration Of Month</th>
-        <th scope="col">Company</th>
-        <th scope="col">Group</th>
-        <th scope="col">Update</th>
-        <th scope="col">Delete</th>
-    </tr>
-    </thead>
-    <tbody>
-    <tr th:each="course:${courses}">
-        <th scope="row" th:text="${course.id}"></th>
-        <td th:text="${course.courseName}"></td>
-        <td th:text="${course.durationMonth}"></td>
-        <td th:text="${course.getCompany().getCompanyName()}"></td>
+<table   WIDTH="100%" align="center" class="table_blur  w3-white ">
+        <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Name</th>
+            <th scope="col">Duration Of Month</th>
+            <th scope="col">Company</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="course:${courses}">
+            <th scope="row" th:text="${course.id}"></th>
+            <td th:text="${course.courseName}"></td>
+            <td th:text="${course.durationMonth}"></td>
+            <td th:text="${course.getCompany().getCompanyName()}"></td>
+         </tr>
 
-        <td><a th:href="@{/courses/group/{courseId}(courseId=${course.getId()})}">
-            <button style="height: 40px; width: 80px; background-color:grey;">Group</button></a></td>
-
-        <td><a th:href="@{/courses/{id}/updateCourse(id=${course.id})}">
-            <button style="height: 40px; width: 80px; background-color:grey;">update</button>
-        </a></td>
-        </td>
-        <td><form th:method="DELETE" th:action="@{/courses/{id}(id=${course.getId()})}">
-            <input type="submit" value="delete" style="height: 40px; width: 80px; background-color:red;"/></form></td>
-
-    </tr>
-    </tbody>
-
-</table>
+        </tbody>
 
 </table>
 
 
+</table>
+<input style=" display: block; margin:auto; font-size:30px;" type="button" value="<<Back to Groups"
+       onclick="window.location.href = '/groups'">
 <br>
-<input style=" display: block; margin:auto; font-size:30px;" type="button" value="<<back to Company"
-       onclick="window.location.href = '/companies'">
-<br>
-
-
 </body>
 </html>

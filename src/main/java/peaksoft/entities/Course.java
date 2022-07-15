@@ -44,20 +44,5 @@ public class Course {
 
     @Transient
     private Long companyId;
-//
-//    @ManyToOne
-//    private Company company;
-//
-//
-//    @ManyToMany(fetch = FetchType.LAZY, cascade = {CascadeType.PERSIST, CascadeType.MERGE})
-//
-//    @JoinTable(name = "group_course",
-//            joinColumns = @JoinColumn(name = "course_id"),
-//            inverseJoinColumns = @JoinColumn(name = "group_id"))
-//
-//    private List<Group> groups;
-//
-//    @OneToOne(fetch = FetchType.EAGER,cascade = CascadeType.ALL,mappedBy = "course")
-//    private Teacher teacher;
 
 }

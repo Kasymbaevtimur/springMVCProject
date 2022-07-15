@@ -71,33 +71,20 @@
         .table_blur tbody:hover tr:hover td {
             color: #444444;
             text-shadow: none;
-        }
 
+        }
     </style>
 </head>
 </head>
 <body>
 
-<div class="w3-top">
-    <div class="w3-bar w3-red w3-card w3-left-align w3-large">
-        <a class="w3-bar-item w3-button w3-hide-medium w3-hide-large w3-right w3-padding-large w3-hover-white w3-large w3-red" href="javascript:void(0);" onclick="myFunction()" title="Toggle Navigation Menu"><i class="fa fa-bars"></i></a>
-        <a href="" class="w3-bar-item w3-button w3-padding-large w3-cyan w3-white">Home</a>
-        <a th:href="@{/companies}" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-cyan w3-hover-white">Company</a>
-        <a th:href="@{/courses}" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-cyan w3-hover-white">Course</a>
-        <a th:href="@{/groups}" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-cyan w3-hover-white">Group</a>
-        <a th:href="@{/teachers}" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-cyan w3-hover-white">Teacher</a>
-        <a th:href="@{/students}" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-red w3-hover-white">Student</a>
-    </div>
-</div>
-<header class="w3-container w3-red w3-center" style="padding:70px 15px">
-    <h1 class="w3-margin w3-jumbo">STUDENT</h1>
-    <p class="w3-xlarge">Moscow</p>
-    <input style=" display: block; margin:auto; font-size:30px;" type="button" value="Add Student"
-           onclick="window.location.href = 'students/addStudent'">
+<header class="w3-container w3-blue w3-center" style="padding:70px 15px">
+    <p class="w3-xlarge w3-red" >Students</p>
     <br>
-    <!--    <button th:href="@{/courses/addCourse}" class="w3-button w3-black w3-padding-large w3-large w3-margin-top">Add Course</button>-->
+    <div th:text="${size}"></div>
+    <br>
 </header>
-<table WIDTH="100%" align="center" class="table_blur  w3-white">
+<table  WIDTH="100%" align="center" class="table_blur  w3-white">
     <thead>
     <tr>
         <th scope="col">#</th>
@@ -106,42 +93,29 @@
         <th scope="col">Email</th>
         <th scope="col">Study Format</th>
         <th scope="col">Group</th>
-        <th scope="col">Update</th>
-        <th scope="col">Delete</th>
+
     </tr>
     </thead>
     <tbody>
-    <tr th:each="student:${students}">
-        <th scope="row" th:text="${student.id}"></th>
-        <td th:text="${student.firstName}"></td>
-        <td th:text="${student.lastName}"></td>
-        <td th:text="${student.email}"></td>
-        <td th:text="${student.studyFormat}"></td>
-        <td th:text="${student.getGroup().getGroupName()}"></td>
+    <tr th:each="getStudent:${students}">
+        <th scope="row" th:text="${getStudent.id}"></th>
+        <td th:text="${getStudent.firstName}"></td>
+        <td th:text="${getStudent.lastName}"></td>
+        <td th:text="${getStudent.email}"></td>
+        <td th:text="${getStudent.studyFormat}"></td>
+        <td th:text="${getStudent.getGroup().getGroupName()}"></td></tr>
 
-        <td><a th:method="delete" th:href="@{/students/{id}/updateStudent(id=${student.id})}">
-            <button style="height: 40px; width: 80px; background-color:grey;">update</button>
-        </a></td>
-
-        <td><form th:method="DELETE" th:action="@{/students(id=${student.getId()})}">
-            <input type="submit" value="delete" style="height: 40px; width: 80px; background-color:red;"/></form></td>
-
-<!--        <td><form><a th:method="delete" th:href="@{/students/{id}(id=${student.getId()})}"-->
-<!--               onclick="return confirm('Are you sure you want to delete this group?');">-->
-<!--            <button  style="height: 40px; width: 80px; background-color:red;">delete</button>-->
-<!--        </a></form></td>-->
-    </tr>
     </tbody>
 
 </table>
-
+<p class="w3-xlarge"></p>
+<br>
+<br>
+<input style=" display: block; margin:auto; font-size:30px;" type="button" value="<<Back to Teacher"
+       onclick="window.location.href = '/teachers'">
+<br>
 
 
 </table>
-<br>
-<input style=" display: block; margin:auto; font-size:30px;" type="button" value="back to Group"
-       onclick="window.location.href = '/groups'">
-<br>
-
 </body>
 </html>

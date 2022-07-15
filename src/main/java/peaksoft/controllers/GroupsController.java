@@ -7,7 +7,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import peaksoft.entities.Course;
 import peaksoft.entities.Group;
-import peaksoft.entities.Student;
 import peaksoft.service.CourseService;
 import peaksoft.service.GroupService;
 import peaksoft.service.StudentService;
@@ -34,16 +33,6 @@ public class GroupsController {
     public List<Course> getAllCourse() {
         return courseService.getAllCourses();
     }
-
-//    @GetMapping("/search")
-//    public String search(@PathVariable("name") String name, Model model) {
-//        List<Student> students = (List<Student>) groupService.getByStudentName(name);
-//        if (name != null) {
-//            model.addAttribute("list", students);
-//        } else {
-//            model.addAttribute("list",studentService.getAllStudents());
-//        }
-//        return "getStudent";
 
 
 
@@ -95,6 +84,12 @@ public class GroupsController {
         else {
             model.addAttribute("list",studentService.getAllStudents());
         }
-        return "/student/getStudent";
+        return "group/getStudent";
+    }
+    @GetMapping("/course/{groupId}")
+    public String getCourseByGroupId(@PathVariable("groupId") Long groupId, Model model) {
+        List<Course> courses = groupService.getCoursesByGroup(groupId);
+        model.addAttribute("courses", courses);
+        return "group/course";
     }
 }
