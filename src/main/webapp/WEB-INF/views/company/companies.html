@@ -83,7 +83,7 @@
 <div class="w3-top">
     <div class="w3-bar w3-red w3-card w3-left-align w3-large">
         <a class="w3-bar-item w3-button w3-hide-medium w3-hide-large w3-right w3-padding-large w3-hover-white w3-large w3-red" href="javascript:void(0);" onclick="myFunction()" title="Toggle Navigation Menu"><i class="fa fa-bars"></i></a>
-        <a href="" class="w3-bar-item w3-button w3-padding-large w3-cyan w3-white">Home</a>
+        <a href="/" class="w3-bar-item w3-button w3-padding-large w3-cyan w3-white">Home</a>
         <a th:href="@{/companies}" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-red w3-hover-white">Company</a>
         <a th:href="@{/courses}" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-cyan  w3-hover-white">Course</a>
         <a th:href="@{/groups}" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-cyan w3-hover-white">Group</a>
@@ -92,7 +92,12 @@
     </div>
 </div>
 <header class="w3-container w3-red w3-center" style="padding:70px 15px">
-    <h1 class="w3-margin w3-jumbo">COMPANY</h1>
+    <div class="w3-container w3-center">
+
+        <h1 class="w3-animate-zoom w3-margin w3-jumbo"> COMPANY  </h1>
+
+    </div>
+
     <p class="w3-xlarge">Moscow</p>
     <input style=" display: block; margin:auto; font-size:30px;" type="button" value="Add Company" onclick="window.location.href = 'companies/addCompany'">
     <br>
@@ -137,7 +142,7 @@
 </table>
 <br>
 <input style=" display: block; margin:auto; font-size:30px;" type="button"  value="<<back to Main"
-       onclick="window.location.href = ''">
+       onclick="window.location.href = '/'">
 <br>
 
 </body>

@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en"xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head>
 <head>
     <title>W3.CSS Template</title>
@@ -14,47 +15,172 @@
         .w3-bar,h1,button {font-family: "Montserrat", sans-serif}
         .fa-anchor,.fa-coffee {font-size:200px}
     </style>
+    <style>
+        .login-box form a {
+            position: relative;
+            display: inline-block;
+            padding: 10px 20px;
+            color: #03e9f4;
+            font-size: 16px;
+            text-decoration: none;
+            text-transform: uppercase;
+            overflow: hidden;
+            transition: .5s;
+            margin-top: 40px;
+            letter-spacing: 4px
+        }
+
+        .login-box a:hover {
+            background: #03e9f4;
+            color: #fff;
+            border-radius: 5px;
+            box-shadow: 0 0 5px #03e9f4,
+            0 0 25px #03e9f4,
+            0 0 50px #03e9f4,
+            0 0 100px #03e9f4;
+        }
+
+        .login-box a span {
+            position: absolute;
+            display: block;
+        }
+
+        .login-box button span:nth-child(1) {
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, #03e9f4);
+            animation: btn-anim1 1s linear infinite;
+        }
+
+        @keyframes btn-anim1 {
+            0% {
+                left: -100%;
+            }
+            50%,100% {
+                left: 100%;
+            }
+        }
+
+        .login-box a span:nth-child(2) {
+            top: -100%;
+            right: 0;
+            width: 2px;
+            height: 100%;
+            background: linear-gradient(180deg, transparent, #03e9f4);
+            animation: btn-anim2 1s linear infinite;
+            animation-delay: .25s
+        }
+
+        @keyframes btn-anim2 {
+            0% {
+                top: -100%;
+            }
+            50%,100% {
+                top: 100%;
+            }
+        }
+
+        .login-box a span:nth-child(3) {
+            bottom: 0;
+            right: -100%;
+            width: 100%;
+            height: 2px;
+            background: linear-gradient(270deg, transparent, #03e9f4);
+            animation: btn-anim3 1s linear infinite;
+            animation-delay: .5s
+        }
+
+        @keyframes btn-anim3 {
+            0% {
+                right: -100%;
+            }
+            50%,100% {
+                right: 100%;
+            }
+        }
+
+        .login-box a span:nth-child(4) {
+            bottom: -100%;
+            left: 0;
+            width: 2px;
+            height: 100%;
+            background: linear-gradient(360deg, transparent, #03e9f4);
+            animation: btn-anim4 1s linear infinite;
+            animation-delay: .75s
+        }
+
+        @keyframes btn-anim4 {
+            0% {
+                bottom: -100%;
+            }
+            50%,100% {
+                bottom: 100%;
+            }
+        }
+    </style>
 </head>
 <body>
 
 
-<div class="w3-top">
+<div  class="w3-top">
     <div class="w3-bar w3-red w3-card w3-left-align w3-large">
-        <a class="w3-bar-item w3-button w3-hide-medium w3-hide-large w3-right w3-padding-large w3-hover-white w3-large w3-red" href="javascript:void(0);" onclick="myFunction()" title="Toggle Navigation Menu"><i class="fa fa-bars"></i></a>
-        <a href="#" class="w3-bar-item w3-button w3-padding-large w3-red w3-white">Home</a>
-        <a th:href="@{/companies}" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-cyan w3-hover-white">Company</a>
-        <a th:href="@{/courses}" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-cyan w3-hover-white">Course</a>
-        <a th:href="@{/groups}" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-cyan w3-hover-white">Group</a>
-        <a th:href="@{/teachers}" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-cyan w3-hover-white">Teacher</a>
-        <a th:href="@{/students}" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-cyan  w3-hover-white">Student</a>
-    </div>
+
+        <a href="/" class="w3-bar-item w3-button w3-padding-large w3-red w3-white">Home</a>
+
+        <a sec:authorize="hasAuthority('ADMIN')" th:href="@{/companies}" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-cyan w3-hover-white">Company </a>
+
+        <a sec:authorize="hasAnyAuthority('ADMIN','INSTRUCTOR')"  th:href="@{/courses}" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-cyan w3-hover-white">Course</a>
+
+        <a sec:authorize="hasAnyAuthority('ADMIN','INSTRUCTOR')" th:href="@{/groups}"  class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-cyan w3-hover-white">Group</a>
+
+        <a sec:authorize="hasAuthority('ADMIN')" th:href="@{/teachers}" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-cyan w3-hover-white">Teacher</a>
+
+        <a sec:authorize="hasAnyAuthority('ADMIN','INSTRUCTOR')" th:href="@{/students}" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-cyan  w3-hover-white">Student</a>
+
+        <form th:action="@{/logout}" method="post">
+            <input type="submit" value="Exit" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-black w3-line-left w3-hover-white">
+        </form>
+
+
 
 
     </div>
-
-     Header
     <header class="w3-container w3-red w3-center" style="padding:128px 16px">
         <h1 class="w3-margin w3-jumbo">TALENTLMS</h1>
+
         <p class="w3-xlarge">Moscow</p>
-<!--        <input style=" display: block; margin:auto; font-size:30px;" type="button" value="Get Started"-->
-<!--               onclick="window.location.href = 'companies/addCompany'">-->
-<!--        <button class="w3-button w3-black w3-padding-large w3-large w3-margin-top">Get Started</button>-->
+
+        <div class="login-box">
+            <form>
+          <a href="profile.html" th:href="@{'/profile/'+${#authentication.name}}">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    My Profile
+            </a>
+
+            </form>
+        </div>
     </header>
+</div>
 
-
-    <div class="w3-container w3-black w3-center w3-opacity w3-padding-64">
-        <h1 class="w3-margin w3-xlarge">You Dreem </h1>
+    <div  class="w3-container w3-black w3-center w3-opacity w3-padding-64">
+        <h1 class="w3-margin w3-xlarge">Your Dream </h1>
     </div>
 
-    <!-- Footer -->
-    <footer class="w3-container w3-padding-64 w3-center w3-opacity">
-        <div class="w3-xlarge w3-padding-32">
-            <i class="fa fa-facebook-official w3-hover-opacity"></i>
-            <i class="fa fa-instagram w3-hover-opacity"></i>
-            <i class="fa fa-twitter w3-hover-opacity"></i>
-            <i class="fa fa-linkedin w3-hover-opacity"></i>
-        </div>
-    </footer>
+
+<!--    <footer class="w3-container w3-padding-64 w3-center w3-opacity">-->
+<!--        <div class="w3-xlarge w3-padding-32">-->
+<!--            <i class="fa fa-facebook-official w3-hover-opacity"></i>-->
+<!--            <i class="fa fa-instagram w3-hover-opacity"></i>-->
+<!--            <i class="fa fa-twitter w3-hover-opacity"></i>-->
+<!--            <i class="fa fa-linkedin w3-hover-opacity"></i>-->
+<!--        </div>-->
+<!--    </footer>-->
 
 </body>
 </html>

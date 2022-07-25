@@ -64,7 +64,7 @@ public class StudentController {
         return "redirect:/students";
     }
 
-    @DeleteMapping()
+    @DeleteMapping("/delete")
     public String deleteStudent(@RequestParam("id") Long id) {
         studentService.deleteStudent(studentService.getStudentById(id));
         return "redirect:/students";

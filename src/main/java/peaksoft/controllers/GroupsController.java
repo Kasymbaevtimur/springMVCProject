@@ -70,7 +70,7 @@ public class GroupsController {
         return "redirect:/groups";
     }
 
-    @DeleteMapping()
+    @DeleteMapping("/delete")
     public String deleteGroup(@RequestParam("id") Long id) {
         groupService.deleteGroup(groupService.getGroupById(id));
         return "redirect:/groups";

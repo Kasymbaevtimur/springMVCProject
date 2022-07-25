@@ -66,7 +66,7 @@ public class TeacherController {
         return "redirect:/teachers";
     }
 
-    @DeleteMapping()
+    @DeleteMapping("/delete")
     public String deleteTeacher(@RequestParam("id") Long id) {
         teacherService.deleteTeacher(teacherService.getTeacherById(id));
         return "redirect:/teachers";

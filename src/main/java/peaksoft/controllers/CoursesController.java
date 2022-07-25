@@ -67,7 +67,7 @@ public class CoursesController {
         return "redirect:/courses";
     }
 
-    @DeleteMapping("/{id}")
+    @DeleteMapping("/delete/{id}")
     public String deleteCourse(@PathVariable("id") Long id) {
         coursesService.deleteCourse(coursesService.getCourseById(id));
         return "redirect:/courses";
