@@ -12,24 +12,23 @@ import peaksoft.service.UserService;
 @Controller
 public class MainPageController {
     private final UserService userService;
-        @Autowired
+
+    @Autowired
     public MainPageController(UserService userService) {
         this.userService = userService;
     }
 
     @RequestMapping("/login")
-    public String login(){
-            return "login";
+    public String login() {
+        return "login";
     }
 
     @GetMapping("/profile/{username}")
-    public  String getUser(Model model,@PathVariable("username") String username){
-        User user= userService.getUserByUserName(username);
-        model.addAttribute("user",user);
-        return"profile";
+    public String getUser(Model model, @PathVariable("username") String username) {
+        User user = userService.getUserByUserName(username);
+        model.addAttribute("user", user);
+        return "profile";
     }
-
-
 
     @GetMapping
     public String MainPage() {

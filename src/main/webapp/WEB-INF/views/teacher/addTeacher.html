@@ -18,10 +18,21 @@
         .w3-bar,h1,button {font-family: "Montserrat", sans-serif}
         .fa-anchor,.fa-coffee {font-size:300px}
     </style>
+    <style>
+        body{
+
+            background:url("https://img3.akspic.ru/crops/5/4/4/1/5/151445/151445-zemlya-temnota-astronomiya-vselennaya-kosmos-3840x2160.jpg") ;
+            background-size: cover;
+            height: 100%;
+            width: 100%;
+
+        }
+
+    </style>
 </head>
 <body>
-<header class="w3-container w3-red w3-center" style="padding:128px 16px">
-    <h1 class="w3-margin w3-jumbo">Add Teacher</h1>
+<header class="w3-center" style="padding:128px 16px">
+    <h1 class="w3-margin w3-jumbo" style="color: greenyellow">Add Teacher</h1>
     <p class="w3-xlarge">Moscow</p>
     <form th:action="@{saveTeacher}"
           th:object="${teacher}"
@@ -42,7 +53,7 @@
     </form>
     <br>
     <br>
-    <input style=" display: block; margin:auto; font-size:30px;" type="button" value="<<back to Teacher"
+    <input style=" display: block; margin:auto; font-size:30px;" type="button" value="back"
            onclick="window.location.href = '/teachers'">
     <br>
 </header>

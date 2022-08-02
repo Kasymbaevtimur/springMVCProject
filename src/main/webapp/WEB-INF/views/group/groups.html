@@ -75,11 +75,24 @@
 
         }
     </style>
+    <style>
+        .b1 {
+            background: darkslategrey;
+            color: white;
+            font-size: 9pt;
+        }
+        /*header{*/
+        /*    background:url("https://img3.akspic.ru/crops/4/8/4/5/2/125484/125484-tekstura-pesnya-rozovyj-muzyka-purpurnyj_cvet-2560x1440.jpg") no-repeat;*/
+        /*    background-size: unset;*/
+
+
+        /*}*/
+    </style>
 </head>
 <body>
 
 <div class="w3-top">
-    <div class="w3-bar w3-red w3-card w3-left-align w3-large">
+    <div class="w3-bar  w3-card w3-left-align w3-large">
         <a class="w3-bar-item w3-button w3-hide-medium w3-hide-large w3-right w3-padding-large w3-hover-white w3-large w3-red" href="javascript:void(0);" onclick="myFunction()" title="Toggle Navigation Menu"><i class="fa fa-bars"></i></a>
         <a href="/" class="w3-bar-item w3-button w3-padding-large w3-cyan w3-white">Home</a>
         <a sec:authorize="hasAuthority('ADMIN')" th:href="@{/companies}" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-cyan w3-hover-white">Company</a>
@@ -89,10 +102,10 @@
         <a th:href="@{/students}" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-cyan w3-hover-white">Student</a>
     </div>
 </div>
-<header class="w3-container w3-red w3-center" style="padding:70px 15px">
+<header class= "w3-container w3-red w3-center" style="padding:70px 15px">
     <h1 class="w3-margin w3-jumbo">GROUP</h1>
     <p class="w3-xlarge">Moscow</p>
-    <input style=" display: block; margin:auto; font-size:30px;" type="button" value="Add Group"
+    <input style=" display: block; margin:auto; font-size:30px;" type="button"class="b1" value="Add Group"
            onclick="window.location.href = 'groups/addGroup'">
     <br>
 
@@ -118,7 +131,6 @@
         <td th:text="${group.groupName}"></td>
         <td th:text="${group.dateOfStart}"></td>
         <td th:text="${group.dateOfFinish}"></td>
-<
         <td><a th:href="@{/groups/course/{groupid}/(groupid=${group.getId()})}">
             <button style="height: 40px; width: 80px; background-color:green;">Course</button>
 
@@ -136,7 +148,7 @@
 
 </table>
 <br>
-<input style=" display: block; margin:auto; font-size:30px;" type="button" value="<<back to Course"
+<input style=" display: block; margin:auto; font-size:30px;" type="button" value="back to Course"
        onclick="window.location.href = '/courses'">
 <br>
 

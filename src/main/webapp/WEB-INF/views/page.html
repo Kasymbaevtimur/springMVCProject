@@ -10,11 +10,13 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
     <style>
         body,h1,h2,h3,h4,h5,h6 {font-family: "Lato", sans-serif}
         .w3-bar,h1,button {font-family: "Montserrat", sans-serif}
         .fa-anchor,.fa-coffee {font-size:200px}
     </style>
+
     <style>
         .login-box form a {
             position: relative;
@@ -87,7 +89,7 @@
             right: -100%;
             width: 100%;
             height: 2px;
-            background: linear-gradient(270deg, transparent, #03e9f4);
+            background: linear-gradient(270deg, transparent, #f68e02);
             animation: btn-anim3 1s linear infinite;
             animation-delay: .5s
         }
@@ -106,7 +108,7 @@
             left: 0;
             width: 2px;
             height: 100%;
-            background: linear-gradient(360deg, transparent, #03e9f4);
+            background: linear-gradient(360deg, transparent, #f68e02);
             animation: btn-anim4 1s linear infinite;
             animation-delay: .75s
         }
@@ -119,13 +121,65 @@
                 bottom: 100%;
             }
         }
+        body{
+            background: url("https://img5.goodfon.ru/original/1920x1080/4/40/synth-retrowave-synthwave-fon-new-retro-wave-sintveiv-retr-7.jpg") no-repeat;
+            background-size: cover;
+        }
+
     </style>
+    <style>
+        .one {
+            padding: 50px 20px;
+            text-align: center;
+            text-transform: unset;
+        }
+        .one h1 {
+            font-family: 'Righteous', cursive;
+            position: relative;
+            color: #3CA1D9;
+            display: inline-block;
+            /*border-top: 2px solid;*/
+            /*border-bottom: 2px solid;*/
+            font-size: 7em;
+            padding: 51px 60px;
+            margin: 0;
+            line-height: 0;
+        }.one h2 {
+            font-family: 'Righteous', cursive;
+            position: relative;
+            color: #3CA1D9;
+            display: inline-block;
+            /*border-top: 2px solid;*/
+            /*border-bottom: 2px solid;*/
+            font-size: 3em;
+            padding: 51px 60px;
+            margin: 0;
+            line-height: 1;
+        }
+        /*.one h1:before, .one h1:after {*/
+        /*    content: "";*/
+        /*    position: absolute;*/
+        /*    top: 0;*/
+        /*    width: 50px;*/
+        /*    height: 100%;*/
+        /*    border-left: 2px solid;*/
+        /*    border-right: 2px solid;*/
+        /*    background: repeating-linear-gradient(180deg, transparent, transparent 2px, #3CA1D9 2px, #3CA1D9 4px);*/
+        /*!*}*!*/
+        /*.one h1:before {left: 0;}*/
+        /*.one h1:after {right: 0;}*/
+        /*@media (max-width: 420px) {*/
+        /*    .one h1 {font-size: 2em;}*/
+        /*}*/
+    </style>
+
+
 </head>
 <body>
 
 
 <div  class="w3-top">
-    <div class="w3-bar w3-red w3-card w3-left-align w3-large">
+    <div class="w3-bar  w3-card w3-left-align w3-large">
 
         <a href="/" class="w3-bar-item w3-button w3-padding-large w3-red w3-white">Home</a>
 
@@ -143,14 +197,21 @@
             <input type="submit" value="Exit" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-black w3-line-left w3-hover-white">
         </form>
 
-
+<!--   class="w3-container w3-red w3-center" style="padding:128px 16px"-->
 
 
     </div>
-    <header class="w3-container w3-red w3-center" style="padding:128px 16px">
-        <h1 class="w3-margin w3-jumbo">TALENTLMS</h1>
+    <header class=" w3-center" style="padding:128px 16px"  >
 
-        <p class="w3-xlarge">Moscow</p>
+    <div class="one">
+        <h1 >Welcome</h1>
+         <br>
+       <h2> <span sec:authentication="name" >Username</span></h2>
+            <br>
+        <i><span sec:authentication="principal.authorities" style="color: #3CA1D9" >Roles</span></i>
+</div>
+
+
 
         <div class="login-box">
             <form>
@@ -160,6 +221,7 @@
                     <span></span>
                     <span></span>
                     <span></span>
+
                     My Profile
             </a>
 
@@ -168,19 +230,10 @@
     </header>
 </div>
 
-    <div  class="w3-container w3-black w3-center w3-opacity w3-padding-64">
-        <h1 class="w3-margin w3-xlarge">Your Dream </h1>
-    </div>
+<!--    <div  class="w3-container w3-black w3-center w3-opacity w3-padding-64">-->
+<!--        <h1 class="w3-margin w3-xlarge">Your Dream </h1>-->
+<!--    </div>-->
 
-
-<!--    <footer class="w3-container w3-padding-64 w3-center w3-opacity">-->
-<!--        <div class="w3-xlarge w3-padding-32">-->
-<!--            <i class="fa fa-facebook-official w3-hover-opacity"></i>-->
-<!--            <i class="fa fa-instagram w3-hover-opacity"></i>-->
-<!--            <i class="fa fa-twitter w3-hover-opacity"></i>-->
-<!--            <i class="fa fa-linkedin w3-hover-opacity"></i>-->
-<!--        </div>-->
-<!--    </footer>-->
 
 </body>
 </html>

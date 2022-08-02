@@ -1,15 +1,13 @@
 package peaksoft.entities;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import javax.persistence.*;
 import java.util.List;
 
 @Entity
 @Table(name = "groups")
-@Data
+@Getter@Setter
 @NoArgsConstructor
 @AllArgsConstructor
 public class Group {
@@ -23,7 +21,7 @@ public class Group {
     @Column(name = "date_of_finish")
     private String dateOfFinish;
 
-    @ManyToMany(fetch = FetchType.LAZY, cascade = {CascadeType.REFRESH, CascadeType.MERGE})
+    @ManyToMany(fetch = FetchType.LAZY, cascade = {CascadeType.REFRESH, CascadeType.MERGE,CascadeType.REMOVE})
     @JoinTable(name = "course_group",
             joinColumns = @JoinColumn(name = "groups_id"),
             inverseJoinColumns = @JoinColumn(name = "courses_id"))

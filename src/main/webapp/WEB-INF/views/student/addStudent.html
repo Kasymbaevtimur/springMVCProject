@@ -32,11 +32,22 @@
                 cursor:pointer;
             }
         </style>
+        <style>
+            body{
+
+                background:url("https://img2.akspic.ru/crops/9/2/7/6/4/146729/146729-kosmicheskoe_prostranstvo-atmosfera-svet-nebo-astronomiya-3840x2160.jpg") ;
+                background-size: cover;
+                height: 100%;
+                width: 100%;
+
+            }
+
+        </style>
     </head>
 </head>
 <body>
-<header class="w3-container w3-red w3-center" style="padding:128px 16px">
-    <h1 class="w3-margin w3-jumbo">Add Student</h1>
+<header class=" w3-center" style="padding:128px 16px">
+    <h1 class="w3-margin w3-jumbo" style="color: greenyellow" >Add Student</h1>
     <p class="w3-xlarge">Moscow</p>
 
     <form th:action="@{saveStudent}"
@@ -66,7 +77,7 @@
     </form>
     <br>
     <br>
-    <input style=" display: block; margin:auto; font-size:30px;" type="button" value="<<back to Student"
+    <input style=" display: block; margin:auto; font-size:30px;" type="button" value="back"
            onclick="window.location.href = '/students'">
     <br>
 </header>

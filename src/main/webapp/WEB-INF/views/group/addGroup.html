@@ -17,11 +17,22 @@
             .w3-bar,h1,button {font-family: "Montserrat", sans-serif}
             .fa-anchor,.fa-coffee {font-size:300px}
         </style>
+        <style>
+            body{
+
+                background:url("https://img1.akspic.ru/crops/3/8/6/5/3/135683/135683-planeta-krug-iskusstvo-art-uzor-3840x2160.jpg") ;
+                background-size: cover;
+                height: 100%;
+                width: 100%;
+
+            }
+
+        </style>
     </head>
 </head>
 <body>
-<header class="w3-container w3-red w3-center" style="padding:128px 16px">
-    <h1 class="w3-margin w3-jumbo">Add Group</h1>
+<header class=" w3-center" style="padding:128px 16px">
+    <h1 class="w3-margin w3-jumbo"style="color: greenyellow" >Add Group</h1>
     <p class="w3-xlarge">Moscow</p>
     <form th:action="@{saveGroup}"
           th:object="${group}"
@@ -44,7 +55,7 @@
 
 
     <br>
-    <input style=" display: block; margin:auto; font-size:30px;" type="button" value="<<back to Group"
+    <input style=" display: block; margin:auto; font-size:30px;" type="button" value="back"
            onclick="window.location.href = '/groups'">
     <br>
 

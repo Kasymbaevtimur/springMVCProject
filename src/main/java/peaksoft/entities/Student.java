@@ -1,15 +1,13 @@
 package peaksoft.entities;
 
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import javax.persistence.*;
 
 @Entity
 @Table(name = "students")
-@Data
+@Getter@Setter
 @NoArgsConstructor
 @AllArgsConstructor
 public class Student {

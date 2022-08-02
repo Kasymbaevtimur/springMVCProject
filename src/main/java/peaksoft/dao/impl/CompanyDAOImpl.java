@@ -4,6 +4,7 @@ package peaksoft.dao.impl;
 import org.springframework.stereotype.Repository;
 import peaksoft.dao.CompanyDAO;
 import peaksoft.entities.Company;
+import peaksoft.entities.Course;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -45,6 +46,7 @@ public class CompanyDAOImpl implements CompanyDAO {
     public void deleteCompany(Company company) {
         entityManager.remove(entityManager.contains(company) ? company : entityManager.merge(company));
     }
+
 
 
 }

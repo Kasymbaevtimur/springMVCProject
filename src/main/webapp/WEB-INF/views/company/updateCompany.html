@@ -16,6 +16,13 @@
         .w3-bar,h1,button {font-family: "Montserrat", sans-serif}
         .fa-anchor,.fa-coffee {font-size:300px}
     </style>
+    <style>
+        .b1 {
+            background: navy;
+            color: white;
+            font-size: 9pt;
+        }
+    </style>
 </head>
 <body>
 <header class="w3-container w3-red w3-center" style="padding:128px 16px">
@@ -33,11 +40,11 @@
     <br><br>
     <input type="text"  name="locatedCountry" th:field="*{locatedCountry}" placeholder="Located Country">
     <br><br>
-    <input type="submit" value="Update">
+    <input type="submit" class="b1" value="Update">
     </form>
 </header>
 <br>
-<input style=" display: block; margin:auto; font-size:30px;" type="button" value="<<back to Company"
+<input style=" display: block; margin:auto; font-size:30px;"  type="button" value="back"
        onclick="window.location.href = '/companies'">
 <br>
 

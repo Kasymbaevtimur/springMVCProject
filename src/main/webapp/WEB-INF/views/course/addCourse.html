@@ -20,11 +20,29 @@
             .w3-bar,h1,button {font-family: "Montserrat", sans-serif}
             .fa-anchor,.fa-coffee {font-size:300px}
         </style>
+        <style>
+            .b1 {
+                background: navy;
+                color: white;
+                font-size: 9pt;
+            }
+        </style>
+        <style>
+            body{
+
+                background:url("https://img3.akspic.ru/crops/8/6/5/0/80568/80568-tehnologii-mir-sfera-tehnologia-vysokaya_tehnologiya-3840x2160.jpg") ;
+                background-size: cover;
+                height: 100%;
+                width: 100%;
+
+            }
+
+        </style>
     </head>
 </head>
 <body>
-<header class="w3-container w3-red w3-center" style="padding:128px 16px">
-    <h1 class="w3-margin w3-jumbo">Add Course</h1>
+<header class=" w3-center" style="padding:128px 16px">
+    <h1 class="w3-margin w3-jumbo" style="color: greenyellow">Add Course</h1>
     <p class="w3-xlarge">Moscow</p>
     <form th:action="@{saveCourse}"
           th:object="${course}"
@@ -42,7 +60,7 @@
         <input type="submit" value="Add">
     </form>
     <br>
-<input style=" display: block; margin:auto; font-size:30px;" type="button" value="<<back to Course"
+<input style=" display: block; margin:auto; font-size:30px;" type="button"  value="back"
        onclick="window.location.href = '/courses'">
 <br>
 

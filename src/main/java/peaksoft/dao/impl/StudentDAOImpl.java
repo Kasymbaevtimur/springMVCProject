@@ -69,7 +69,7 @@ public class StudentDAOImpl implements StudentDAO {
 
     @Override
     public List<Student> getStudentsByCompany(Long companyId) {
-        List<Student>students=entityManager.createQuery("select s from Student s join Group g on s.group.id=g.id join  g.courses c  join Company com on com.id=c.company.id where com.id=?1",Student.class)
+        List<Student>students=entityManager.createQuery(" select s from Student s join Group g on s.group.id=g.id join  g.courses c  join Company com on com.id=c.company.id where com.id=?1",Student.class)
                 .setParameter(1,companyId).getResultList();
         return students;
     }

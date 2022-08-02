@@ -2,6 +2,7 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
     <title>Title</title>
 
 
@@ -20,11 +21,23 @@
             .w3-bar,h1,button {font-family: "Montserrat", sans-serif}
             .fa-anchor,.fa-coffee {font-size:300px}
         </style>
+        <style>
+            body{
+
+                background:url("https://img2.akspic.ru/crops/9/2/8/5/3/135829/135829-kosmos-mir-televideniye-astronomicheskij_obekt-shar-3840x2160.jpg") ;
+                background-size: cover;
+                height: 100%;
+                width: 100%;
+
+            }
+
+        </style>
     </head>
 </head>
 <body>
-<header class="w3-container w3-red w3-center" style="padding:128px 16px">
-    <h1 class="w3-margin w3-jumbo">Add Company</h1>
+<header class=" w3-center" style="padding:128px 16px">
+
+    <h1 class="w3-margin w3-jumbo" style="color: greenyellow">Add Company</h1>
     <p class="w3-xlarge">Moscow</p>
 
     <form th:action="@{saveCompany}"
@@ -39,7 +52,7 @@
 
     </form>
     <br>
-    <input style=" display: block; margin:auto; font-size:30px;" type="button" value="<<back to Company"
+    <input style=" display: block; margin:auto; font-size:30px;" type="button" value="back"
            onclick="window.location.href = '/companies'">
     <br>
 
