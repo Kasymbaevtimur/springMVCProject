@@ -69,8 +69,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                .antMatchers("/students/{id}/updateStudent").hasAnyAuthority("ADMIN","INSTRUCTOR")
                .antMatchers("/students/delete").hasAuthority("ADMIN")
 
-
-
                .anyRequest().authenticated()
                .and()
                .formLogin()
